@@ -8,10 +8,6 @@
   @return unquote("alpha(#{$c}, #{$a})");
 }
 
-@function addalpha($c) {
-  @return rgba($c, 0.9);
-}
-
 @function on($color, $state: 'primary') {
   // Allow 'light' or 'dark' to $color
   @if ($color == 'light') { $color: white; }
@@ -97,17 +93,17 @@
 $primary:                               theme(color);
 $drop_target_color:                     #FF7043;
 
-$background:                            addalpha(if($variant == 'light', background(c), background(e)));
-$surface:                               addalpha(if($variant == 'light', background(a), background(h)));
-$base:                                  addalpha(if($variant == 'light', background(a), background(g)));
-$base-alt:                              addalpha(if($variant == 'light', background(b), background(f)));
+$background:                            if($variant == 'light', background(c), background(e));
+$surface:                               if($variant == 'light', background(a), background(h));
+$base:                                  if($variant == 'light', background(a), background(g));
+$base-alt:                              if($variant == 'light', background(b), background(f));
 
 $tooltip:                               if($blackness == 'true' and $variant == 'dark', rgba(#101010, 0.9), rgba(#363636, 0.9));
 $scrim:                                 rgba(black, 0.6);
 $scrim-alt:                             rgba(black, 0.3);
 $scrim-inverse:                         rgba(white, 0.1);
-$titlebar:                              addalpha(if($topbar == 'dark', background(g), background(a)));
-$titlebar-backdrop:                     addalpha(if($topbar == 'dark', background(g), background(a)));
+$titlebar:                              if($topbar == 'dark', background(g), background(a));
+$titlebar-backdrop:                     if($topbar == 'dark', background(g), background(a));
 
 $panel-solid:                           if($blackness == 'true', black, #1F1F1F); // for Unity panel which doesn't allow translucent colors
 $panel:                                 if($opacity == 'default', rgba($panel-solid, 0.65), $panel-solid);
